@@ -4,22 +4,21 @@ app.directive('errorDirective',['$location',function($location) {
         template: "<div ng-transclude>></div>",
         transclude:true,
         link: function($scope, element, attrs){
-        	$scope.showMessage = true;
+        	$scope.hideMessage = true;
 
     		$scope.closeAlert = function(){
-    			$scope.showMessage = true;
+    			$scope.hideMessage = true;
     		}
 
-        	$scope.$watch(function () { 
+        	$scope.$watch(function() { 
 				return $location.absUrl(); }, 
 			function() {
 				if($location.search().msg) {
 				    $scope.msg = $location.search().msg;
-				    $scope.showMessage =false;
+				    $scope.hideMessage =false;
 				}              
-     			});
-     
+     		});
             }
-     }
+         }
  }]);
 
